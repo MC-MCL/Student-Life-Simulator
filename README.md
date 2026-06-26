@@ -1,1 +1,413 @@
-# -
+好的！我来为你生成一个专业、详细、完整的README.md文件。这个版本包含项目介绍、功能特性、架构设计、使用指南等完整内容。
+
+```markdown
+# 🎓 Student Life Simulator
+### *一个基于C++的校园生活模拟游戏*
+
+[![C++](https://img.shields.io/badge/C++-11-blue.svg)](https://isocpp.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)]()
+
+---
+
+## 📖 项目概述
+
+**Student Life Simulator** 是一款沉浸式的大学生活模拟游戏，通过精细化的状态管理系统和丰富的互动机制，让玩家体验真实的大学生活。玩家需要合理分配时间与精力，在学业、社交和生活中找到平衡，最终达成毕业目标。
+
+本项目采用C++11标准开发，运用面向对象编程思想，实现了完整的游戏循环、状态管理和事件驱动系统。代码结构清晰，易于扩展，适合作为C++学习项目或游戏开发入门参考。
+
+---
+
+## ✨ 核心功能
+
+### 🎯 学业系统
+- **课程选修**：提供10+门专业课程（高等数学、C++编程、数据结构等），每门课程具有不同的学分值
+- **学习机制**：投入学习时间影响考试成绩，精力值动态调整学习效率
+- **考试系统**：支持日常考试和集中考试周两种模式
+- **成绩评定**：百分制成绩自动转换为等级制（A/B/C/D/F），并计算GPA
+
+### 🧠 角色状态管理
+- **精力值系统**（0-100）：影响学习效率，通过睡眠、饮食、运动恢复
+- **快乐值系统**（0-100）：影响游戏进程，通过社交、娱乐活动维持
+- **实时反馈**：状态变化即时反映在游戏界面中
+
+### 🏆 技能与成就
+- **技能获取**：考试成绩85分以上有机会获得额外技能（编程能力、数学思维等）
+- **技能积累**：掌握多项技能助力毕业评估
+
+### 🎮 交互系统
+- **11种核心操作**：查看状态、选修课程、学习备考、日常活动、考试周、学期推进等
+- **直观界面**：表格化状态显示，清晰呈现所有关键数据
+- **实时反馈**：每次操作都有详细的文字反馈
+
+### 🎓 毕业条件
+- 完成8个学期
+- GPA ≥ 2.0
+- 完成20门课程
+
+---
+
+## 🏗️ 系统架构
+
+### 类结构设计
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    StudentSimulator                     │
+│  - 游戏主循环                                          │
+│  - 菜单系统                                            │
+│  - 事件调度                                            │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│                       Student                           │
+│  - 属性：姓名、年龄、专业、学期、GPA                   │
+│  - 状态：精力值、快乐值                                │
+│  - 数据：课程列表、技能列表                            │
+│  - 方法：学习、考试、活动、状态管理                    │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
+│                       Course                           │
+│  - 属性：课程名、学分、成绩、等级                      │
+│  - 方法：成绩设置、信息显示                            │
+└─────────────────────────────────────────────────────────┘
+```
+
+### 数据流设计
+
+```
+用户输入 → 菜单选择 → 调用相应方法 → 更新学生状态 → 显示反馈 → 刷新界面
+```
+
+### 状态机设计
+
+```
+    ┌─────────┐
+    │  开始   │
+    └────┬────┘
+         ▼
+    ┌─────────┐
+    │ 选修课程│◄────┐
+    └────┬────┘     │
+         ▼          │
+    ┌─────────┐     │
+    │ 学习备考│     │
+    └────┬────┘     │
+         ▼          │
+    ┌─────────┐     │
+    │ 考试周  │     │
+    └────┬────┘     │
+         ▼          │
+    ┌─────────┐     │
+    │ 学期推进│─────┘
+    └────┬────┘
+         ▼
+    ┌─────────┐
+    │ 毕业检查│
+    └────┬────┘
+         ▼
+    ┌─────────┐
+    │  结束   │
+    └─────────┘
+```
+
+---
+
+## 🛠️ 技术实现
+
+### 开发环境
+- **语言标准**：C++11
+- **编译器**：GCC 8.1.0+ / MinGW-w64 / Clang
+- **构建工具**：命令行 / Makefile
+- **IDE支持**：Visual Studio Code / CLion / Visual Studio
+
+### 核心技术
+- **面向对象设计**：封装、继承、多态
+- **标准模板库（STL）**：vector、string、algorithm
+- **随机数生成**：`<random>` 库实现真随机
+- **时间管理**：`<ctime>` 实现时间种子
+- **输入输出**：`<iostream>` + `<iomanip>` 格式化输出
+
+### 代码特点
+- ✅ 完整的注释系统
+- ✅ 清晰的命名规范
+- ✅ 模块化设计
+- ✅ 易于扩展的架构
+- ✅ 错误处理机制
+
+---
+
+## 🚀 快速开始
+
+### 环境准备
+
+#### Windows
+```bash
+# 安装MinGW-w64
+# 下载地址：https://www.mingw-w64.org/
+
+# 验证安装
+g++ --version
+```
+
+#### Linux (Ubuntu/Debian)
+```bash
+sudo apt update
+sudo apt install g++ make
+```
+
+#### macOS
+```bash
+# 安装Xcode Command Line Tools
+xcode-select --install
+```
+
+### 编译与运行
+
+#### 基础编译
+```bash
+# 编译
+g++ -o student_simulator main.cpp -std=c++11
+
+# 运行
+./student_simulator        # Linux/macOS
+student_simulator.exe      # Windows
+```
+
+#### 优化编译
+```bash
+g++ -O2 -o student_simulator main.cpp -std=c++11
+```
+
+#### 调试模式
+```bash
+g++ -g -o student_simulator_debug main.cpp -std=c++11
+```
+
+### 中文乱码解决方案
+
+#### Windows CMD
+```bash
+chcp 65001
+student_simulator.exe
+```
+
+#### Windows PowerShell
+```powershell
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+./student_simulator.exe
+```
+
+#### 重新编译（GBK编码）
+```bash
+g++ -o student_simulator main.cpp -std=c++11 -fexec-charset=GBK
+```
+
+---
+
+## 🎮 游戏指南
+
+### 主菜单
+```
+═══════════════════════════════════════
+      🎓 学生生活模拟器 v1.0
+═══════════════════════════════════════
+  1. 📚 查看状态
+  2. 📖 选修课程
+  3. 📝 学习/考试
+  4. 🏃 日常活动
+  5. 🎯 进入考试周
+  6. 📅 推进到下学期
+  7. 💤 休息一天
+  8. 🎮 摸鱼
+  9. 🎓 尝试毕业
+  0. 🚪 退出
+═══════════════════════════════════════
+```
+
+### 游戏策略
+
+#### 🎯 新手入门
+1. **第一学期**：选修2-3门基础课程
+2. **学习节奏**：每天学习2-3小时，保持精力在60以上
+3. **状态管理**：每学习3天，安排1天休息或社交
+
+#### 💡 进阶技巧
+- **高效学习**：在精力值80以上时学习，效率最高
+- **技能搭配**：不同课程可能触发不同技能，合理搭配
+- **考试周准备**：考前保持精力100，争取最高成绩
+
+#### ⚠️ 注意事项
+- 快乐值低于30时，优先进行社交活动
+- 精力值低于30时，学习效果减半
+- 每个学期至少选修3门课程确保进度
+
+### 游戏截图示例
+
+```
+╔════════════════════════════════════════╗
+║          📊 张三 的状态                ║
+╠════════════════════════════════════════╣
+║  年龄: 20            学期: 3           ║
+║  专业: 计算机科学    GPA: 3.45         ║
+║  精力: 75/100       快乐: 82/100       ║
+╠════════════════════════════════════════╣
+║  已修课程:                             ║
+║    高等数学      A (92分)              ║
+║    C++编程        B (85分)             ║
+║    数据结构       A (90分)             ║
+╠════════════════════════════════════════╣
+║  技能:                                 ║
+║    ⭐ 学习基础                          ║
+║    ⭐ 编程能力                          ║
+║    ⭐ 数学思维                          ║
+╚════════════════════════════════════════╝
+```
+
+---
+
+## 📊 数据统计
+
+### 课程列表
+| 课程名称 | 学分 | 难度 |
+|---------|------|------|
+| 高等数学 | 4 | ⭐⭐⭐ |
+| C++编程 | 3 | ⭐⭐⭐ |
+| 数据结构 | 3 | ⭐⭐⭐⭐ |
+| 操作系统 | 3 | ⭐⭐⭐⭐ |
+| 计算机网络 | 3 | ⭐⭐⭐ |
+| 数据库原理 | 3 | ⭐⭐⭐ |
+| 软件工程 | 2 | ⭐⭐ |
+| 人工智能 | 4 | ⭐⭐⭐⭐⭐ |
+| 机器学习 | 3 | ⭐⭐⭐⭐ |
+| 英语 | 2 | ⭐⭐ |
+
+### 状态影响因子
+| 活动 | 精力变化 | 快乐变化 | 效率影响 |
+|------|---------|---------|---------|
+| 学习(1小时) | -2 | +0 | +3分 |
+| 睡眠 | +40 | +5 | - |
+| 吃饭 | +20 | +8 | - |
+| 社交 | -10 | +20 | - |
+| 运动 | +15 | +10 | - |
+| 摸鱼 | -5 | +5 | - |
+
+---
+
+## 📝 开发日志
+
+### v1.0.0 (2026-06-26)
+- ✅ 初始版本发布
+- ✅ 实现核心游戏循环
+- ✅ 完成课程系统
+- ✅ 实现状态管理
+- ✅ 添加考试系统
+- ✅ 技能系统上线
+- ✅ 毕业条件验证
+
+### 计划功能 (v2.0.0)
+- 📌 图形界面（使用Qt/SFML）
+- 📌 多人联机模式
+- 📌 社团活动系统
+- 📌 恋爱系统
+- 📌 兼职工作系统
+- 📌 数据持久化（存档/读档）
+- 📌 成就系统
+- 📌 随机事件系统
+
+---
+
+## 🤝 贡献指南
+
+欢迎贡献代码！请遵循以下步骤：
+
+1. **Fork** 本仓库
+2. 创建您的功能分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交您的更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 打开一个 **Pull Request**
+
+### 代码规范
+- 使用C++11标准
+- 遵循Google C++ Style Guide
+- 添加充分的注释
+- 确保代码可编译运行
+
+---
+
+## 🧪 测试
+
+### 手动测试用例
+```bash
+# 测试1：正常游戏流程
+输入姓名 → 选课 → 学习 → 考试 → 推进学期 → 毕业
+
+# 测试2：极端情况
+将精力降到0 → 检查游戏是否结束
+将快乐降到0 → 检查游戏是否结束
+
+# 测试3：边界条件
+学习时间输入0或负数 → 检查输入验证
+选修已修课程 → 检查是否允许重复
+```
+
+---
+
+## 📄 许可证
+
+本项目采用 **MIT License** 开源协议。
+
+```
+MIT License
+
+Copyright (c) 2026 [Your Name]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+## 📞 联系方式
+
+- **项目维护者**：[你的名字]
+- **GitHub**：[你的GitHub链接]
+- **Email**：[你的邮箱]
+
+---
+
+## 🙏 致谢
+
+感谢所有为这个项目提供帮助和建议的朋友们！
+
+---
+
+## ⭐ Star History
+
+如果这个项目对你有帮助，请给它一个Star ⭐ ！
+
+---
+
+**祝你大学生活愉快！🎉**
+```
+
+---
+
